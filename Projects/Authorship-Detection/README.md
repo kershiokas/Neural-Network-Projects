@@ -14,22 +14,38 @@ Trained using backpropagation and gradient descent.
 
 # Training data format
 
-This format exactly: text #eos -AuthorName-
+This format exactly: `text #eos -AuthorName-`
 
 Input data is automatically preprocessed:
 - lowercased,
 - punctuation is split into a separate token,
-- numbers get turned into <NUMBER> tag.
+- numbers get turned into `<NUMBER>` tag.
 
 If new authors appear in updated training data, the network expands automatically to accommodate them.
 
 
 # To start out
 
-All is needed is training data.
+All that is needed is training data.
 
 It will grab vocabulary from the training data and index it after the training is done
 
 trained weights will be created.
 
-also a csv files with training rate, epoch and loss.
+ a CSV file will be created with training rate, epoch and loss.
+
+you have two structs, run and train.
+```cpp
+train(trainingDataFile, prevIndexedVocabFile, networkFile); //String Inputs
+
+run(networkFile, prevIndexedVocabFile); //String Inputs
+```
+
+To train from scratch all you need is training data. Make sure to set `networkFile` and `prevIndexedVocabFile` to `"-"`.
+
+While `run` needs both `networkFile` and `prevIndexedVocabFile`.
+
+
+
+
+
